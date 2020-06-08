@@ -107,8 +107,6 @@ where genre_id = (select genre_id from genre
                   where name = 'Metal')
                   and composer is null;
 
--- 6 Refresh your page to remove all database changes.
-
 -- GROUP BY
 
 -- 1 Find a count of how many tracks there are per genre. Display the genre name with the count.
@@ -213,6 +211,23 @@ select * from orders;
 
 -- Get the total cost of an order ( sum the price of all products on an order ).
 
+alter table orders
+add column price integer;
+
+update orders
+set price = 25
+where order_id = 1;
+
+update orders
+set price = 60
+where order_id = 2;
+
+update orders
+set price = 135
+where order_id = 3;
+
+select (quantity * price) from orders
+where order_id = 1;
 
 -- Add a foreign key reference from orders to users.
 alter table orders
